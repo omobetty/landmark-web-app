@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_REPO = 'chafah/landmark-web-app'
+        DOCKER_REPO = 'omobetty/landmark-web-app'
         IMAGE_TAG   = "build-${BUILD_NUMBER}"
     }
 
@@ -65,7 +65,7 @@ pipeline {
             echo 'Pipeline failed!'
         }
         always {
-            sh 'docker rmi ${DOCKER_REPO}:${IMAGE_TAG} || true'
+            sh 'docker rmi -f ${DOCKER_REPO}:${IMAGE_TAG} || true'
             cleanWs()
         }
     }
